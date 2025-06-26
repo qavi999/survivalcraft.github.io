@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Aktualizacja Systemu</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+    .window {
+      background: white;
+      color: black;
+      border: 2px solid red;
+      padding: 10px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 Zabezpieczenie systemu Windows</h1>
+  <p>Wymagana ponowna autoryzacja. Wpisz PIN komputera:</p>
+  <input type="password" placeholder="●●●●" onfocus="prank()" />
+
+  <audio id="trollAudio" loop>
+    <source src="https://www.myinstants.com/media/sounds/vine-boom.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function prank() {
+      document.getElementById('trollAudio').play();
+
+      // Powtarzające się okienka
+      setInterval(() => {
+        const win = window.open("", "", "width=200,height=100");
+        if (win) {
+          win.document.write("<h3>🔥 System Error!</h3>");
+          win.document.body.style.background = "red";
+          win.document.body.style.color = "white";
+          win.document.body.style.fontFamily = "monospace";
+        }
+      }, 800);
+
+      // Powiadomienia
+      for (let i = 0; i < 10; i++) {
+        setTimeout(() => alert("⚠️ Krytyczny błąd systemu!"), i * 3000);
+      }
+
+      // "Zawieszenie" przeglądarki
+      setInterval(() => {
+        const div = document.createElement("div");
+        div.className = "window";
+        div.innerText = "💣 Windows Crash";
+        div.style.top = Math.random() * window.innerHeight + "px";
+        div.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(div);
+      }, 500);
+    }
+  </script>
+</body>
+</html>
